@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMAN 1 Wringinanom - Profil Sekolah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-xl fixed w-full top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">
+                                <img src="images/logoRemove.png" alt="">
+                            </span>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800">SMAN 1 Wringinanom</span>
+                        <p class="text-xs text-gray-500 -mt-1">Keunggulan dalam Pendidikan</p>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="relative text-gray-700 hover:text-blue-600 transition duration-300 font-medium group">
+                        Beranda
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="relative text-gray-700 hover:text-blue-600 transition duration-300 font-medium group">
+                        Tentang
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#programs" class="relative text-gray-700 hover:text-blue-600 transition duration-300 font-medium group">
+                        Program
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#gallery" class="relative text-gray-700 hover:text-blue-600 transition duration-300 font-medium group">
+                        Galeri
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#registration" class="relative text-gray-700 hover:text-blue-600 transition duration-300 font-medium group">
+                        Pendaftaran
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="relative text-gray-700 hover:text-blue-600 transition duration-300 font-medium group">
+                        Kontak
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#registration" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition duration-300">
+                        Daftar Sekarang
+                    </a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white/95 backdrop-blur-md shadow-xl fixed w-full top-20 z-40 border-b border-gray-100">
+        <div class="px-6 py-4 space-y-3">
+            <a href="#home" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100 transition duration-300">Beranda</a>
+            <a href="#about" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100 transition duration-300">Tentang</a>
+            <a href="#programs" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100 transition duration-300">Program</a>
+            <a href="#gallery" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100 transition duration-300">Galeri</a>
+            <a href="#registration" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100 transition duration-300">Pendaftaran</a>
+            <a href="#contact" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100 transition duration-300">Kontak</a>
+            <div class="pt-4">
+                <a href="#registration" class="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition duration-300">
+                    Daftar Sekarang
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white pt-20">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Selamat Datang di SMAN 1 Wringinanom</h1>
+                    <p class="text-xl mb-8 opacity-90">Membangun generasi unggul dengan pendidikan berkualitas dan karakter yang kuat untuk masa depan Indonesia yang gemilang.</p>
+                    <div class="space-x-4">
+                        <a href="#registration" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Daftar Sekarang</a>
+                        <a href="#about" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">Pelajari Lebih</a>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <img src="images/smaneww.webp" 
+                         alt="SMA Nusantara School Building" 
+                         class="w-full h-auto rounded-xl shadow-2xl"
+                         onerror="this.src=''; this.alt='School building image failed to load'; this.style.display='none';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Tentang SMAN 1 Wringinanom</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Sekolah unggulan yang telah berdiri sejak 1985, berkomitmen menghasilkan lulusan berkualitas dengan prestasi akademik dan non-akademik yang membanggakan.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Kurikulum Unggulan</h3>
+                    <p class="text-gray-600">Menerapkan kurikulum nasional yang diperkaya dengan program internasional untuk mempersiapkan siswa menghadapi tantangan global.</p>
+                </div>
+                
+                <div class="text-center card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tenaga Pengajar Berkualitas</h3>
+                    <p class="text-gray-600">Didukung oleh guru-guru berpengalaman dan berkompeten dengan kualifikasi S1 dan S2 dari universitas terkemuka.</p>
+                </div>
+                
+                <div class="text-center card-hover bg-gray-50 p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Fasilitas Lengkap</h3>
+                    <p class="text-gray-600">Dilengkapi dengan laboratorium sains, komputer, perpustakaan modern, dan fasilitas olahraga yang mendukung pembelajaran optimal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Program Unggulan</h2>
+                <p class="text-xl text-gray-600">Berbagai program yang dirancang untuk mengembangkan potensi siswa secara maksimal</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="images/mipa1.png" 
+                             alt="Science Laboratory" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Science lab image failed to load'; this.style.display='none';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Program MIPA</h3>
+                        <p class="text-gray-600 mb-4">Fokus pada Matematika dan Ilmu Pengetahuan Alam dengan laboratorium lengkap dan metode pembelajaran inovatif.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Matematika Lanjut</li>
+                            <li>• Fisika Eksperimental</li>
+                            <li>• Kimia Analitik</li>
+                            <li>• Biologi Molekuler</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="images/ipss.jfif" 
+                             alt="Social Studies Class" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Social studies class image failed to load'; this.style.display='none';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Program IPS</h3>
+                        <p class="text-gray-600 mb-4">Mengembangkan pemahaman tentang ilmu sosial, ekonomi, dan humaniora dengan pendekatan kontekstual.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Ekonomi Bisnis</li>
+                            <li>• Sosiologi Terapan</li>
+                            <li>• Geografi Regional</li>
+                            <li>• Sejarah Indonesia</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="images/bahasa3.jpg" 
+                             alt="Language Learning Class" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Language class image failed to load'; this.style.display='none';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Program Bahasa</h3>
+                        <p class="text-gray-600 mb-4">Menguasai berbagai bahasa asing dan sastra dengan dukungan native speaker dan teknologi modern.</p>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Bahasa Inggris</li>
+                            <li>• Bahasa Mandarin</li>
+                            <li>• Bahasa Jepang</li>
+                            <li>• Sastra Indonesia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Galeri Sekolah</h2>
+                <p class="text-xl text-gray-600">Lihat suasana kehidupan sekolah dan berbagai kegiatan di SMAN 1 Wringinanom</p>
+            </div>
+            
+            <!-- Gallery Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="gallery-filter active px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition duration-300" data-filter="all">
+                    Semua
+                </button>
+                <button class="gallery-filter px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-semibold hover:bg-gray-300 transition duration-300" data-filter="facilities">
+                    Fasilitas
+                </button>
+                <button class="gallery-filter px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-semibold hover:bg-gray-300 transition duration-300" data-filter="activities">
+                    Kegiatan
+                </button>
+                <button class="gallery-filter px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-semibold hover:bg-gray-300 transition duration-300" data-filter="achievements">
+                    Prestasi
+                </button>
+                <button class="gallery-filter px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-semibold hover:bg-gray-300 transition duration-300" data-filter="events">
+                    Acara
+                </button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="galleryGrid">
+                <!-- Facilities -->
+                <div class="gallery-item facilities card-hover" data-category="facilities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/gedung.webp" 
+                             alt="Main School Building" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Main building image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Gedung Utama</h3>
+                                <p class="text-sm">Gedung berlantai 4 dengan 36 ruang kelas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item facilities card-hover" data-category="facilities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/kantin.webp" 
+                             alt="Science Laboratory" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Science lab image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">kantin Sekolah</h3>
+                                <p class="text-sm">Kantin Sekolah di gunakan untuk siswa ketika istirahat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item facilities card-hover" data-category="facilities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/labKomputer.jpg" 
+                             alt="Computer Laboratory" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Computer lab image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Lab Komputer</h3>
+                                <p class="text-sm">40 unit komputer dengan internet cepat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item facilities card-hover" data-category="facilities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/perpustakaanSMA.jpeg" 
+                             alt="School Library" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Library image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Perpustakaan</h3>
+                                <p class="text-sm">15.000+ koleksi buku dan e-book</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activities -->
+                <div class="gallery-item activities card-hover" data-category="activities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/kegiatan.webp" 
+                             alt="Interactive Learning Activity" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Learning activity image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Kegiatan Belajar</h3>
+                                <p class="text-sm">Suasana pembelajaran yang interaktif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item activities card-hover" data-category="activities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/ekstra1.webp" 
+                             alt="Extracurricular Activities" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Extracurricular image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Ekstrakurikuler</h3>
+                                <p class="text-sm">25+ pilihan kegiatan ekstrakurikuler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item activities card-hover" data-category="activities">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/olahraga1.webp" 
+                             alt="Sports Activities" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Sports image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Olahraga</h3>
+                                <p class="text-sm">Lapangan basket, voli, dan futsal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievements -->
+                <div class="gallery-item achievements card-hover" data-category="achievements">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/olimpiade2.webp" 
+                             alt="Academic Achievement" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Achievement image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Juara Olimpiade</h3>
+                                <p class="text-sm">Medali emas Olimpiade Sains Nasional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item achievements card-hover" data-category="achievements">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/pentas.webp" 
+                             alt="Arts Achievement" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Arts achievement image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Prestasi Seni</h3>
+                                <p class="text-sm">Juara festival seni tingkat provinsi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Events -->
+                <div class="gallery-item events card-hover" data-category="events">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/upacara.webp" 
+                             alt="Independence Day Celebration" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Independence day image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Hari Kemerdekaan</h3>
+                                <p class="text-sm">Perayaan 17 Agustus dengan mengadakan upacara</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item events card-hover" data-category="events">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/pameran.webp" 
+                             alt="Science Fair" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Science fair image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Festival Ramadhan</h3>
+                                <p class="text-sm">Pameran tata busana siswa tahunan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item events card-hover" data-category="events">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-64 relative group cursor-pointer">
+                        <img src="images/wisudaa.webp" 
+                             alt="Graduation Ceremony" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                             onerror="this.src=''; this.alt='Graduation image failed to load'; this.style.display='none';">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 flex items-center justify-center">
+                            <div class="text-white text-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <h3 class="text-lg font-semibold mb-2">Wisuda</h3>
+                                <p class="text-sm">Upacara kelulusan siswa kelas XII</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pendaftaran Siswa Baru</h2>
+                <p class="text-xl text-gray-600">Bergabunglah dengan keluarga besar SMAN 1 Wringinanom dan wujudkan impian masa depan Anda</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Registration Form -->
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Form Pendaftaran</h3>
+                    <form id="registrationForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap *</label>
+                                <input type="text" id="fullName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">NISN *</label>
+                                <input type="text" id="nisn" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tempat Lahir *</label>
+                                <input type="text" id="birthPlace" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir *</label>
+                                <input type="date" id="birthDate" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin *</label>
+                                <select id="gender" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Pilih Jenis Kelamin</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Program Pilihan *</label>
+                                <select id="program" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Pilih Program</option>
+                                    <option value="MIPA">MIPA</option>
+                                    <option value="IPS">IPS</option>
+                                    <option value="Bahasa">Bahasa</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Lengkap *</label>
+                            <textarea id="address" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Orang Tua *</label>
+                                <input type="text" id="parentName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">No. Telepon *</label>
+                                <input type="tel" id="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button type="submit" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                                Daftar Sekarang
+                            </button>
+                            <button type="button" id="resetForm" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition duration-300">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Student List -->
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Daftar Pendaftar</h3>
+                        <div class="flex items-center space-x-3">
+                            <span id="studentCount" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">0 Siswa</span>
+                            <button id="exportPdfBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                <span>Export PDF</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <input type="text" id="searchInput" placeholder="Cari berdasarkan nama atau NISN..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div id="studentList" class="space-y-4 max-h-96 overflow-y-auto">
+                        <div class="text-center text-gray-500 py-8">
+                            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <p>Belum ada pendaftar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
+                <p class="text-xl text-gray-300">Kami siap membantu Anda dengan informasi lebih lanjut</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Alamat</h3>
+                    <p class="text-gray-300">Lebanisuko, Kec. Wringinanom, <br>Kabupaten Gresik, Jawa Timur 61176</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Telepon</h3>
+                    <p class="text-gray-300">031 77625226</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-300">sman1wringinanomgresik@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">
+                            <img src="images/logoRemove.png" alt="Logo-SMA-1-Wringinanom">
+                        </span>
+                    </div>
+                    <span class="text-xl font-bold">SMAN 1 Wringinanom</span>
+                </div>
+                <p class="text-gray-400">&copy; 2025 SMAN 1 Wringinanom. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-semibold text-gray-800">Edit Data Siswa</h3>
+                    <button id="closeModal" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <form id="editForm" class="space-y-6">
+                    <input type="hidden" id="editId">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap *</label>
+                            <input type="text" id="editFullName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">NISN *</label>
+                            <input type="text" id="editNisn" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tempat Lahir *</label>
+                            <input type="text" id="editBirthPlace" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir *</label>
+                            <input type="date" id="editBirthDate" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kelamin *</label>
+                            <select id="editGender" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Program Pilihan *</label>
+                            <select id="editProgram" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Pilih Program</option>
+                                <option value="MIPA">MIPA</option>
+                                <option value="IPS">IPS</option>
+                                <option value="Bahasa">Bahasa</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Lengkap *</label>
+                        <textarea id="editAddress" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Orang Tua *</label>
+                            <input type="text" id="editParentName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">No. Telepon *</label>
+                            <input type="tel" id="editPhone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" id="editEmail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button type="submit" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Simpan Perubahan
+                        </button>
+                        <button type="button" id="cancelEdit" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition duration-300">
+                            Batal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Student data storage
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+        let editingId = null;
+
+        // DOM elements
+        const registrationForm = document.getElementById('registrationForm');
+        const editForm = document.getElementById('editForm');
+        const studentList = document.getElementById('studentList');
+        const studentCount = document.getElementById('studentCount');
+        const searchInput = document.getElementById('searchInput');
+        const editModal = document.getElementById('editModal');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const exportPdfBtn = document.getElementById('exportPdfBtn');
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Generate unique ID
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        // Save students to localStorage
+        function saveStudents() {
+            localStorage.setItem('students', JSON.stringify(students));
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Create student card HTML
+        function createStudentCard(student) {
+            return `
+                <div class="bg-white rounded-lg shadow-md p-6 fade-in" data-student-id="${student.id}">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex-1">
+                            <h4 class="text-lg font-semibold text-gray-800">${student.fullName}</h4>
+                            <p class="text-sm text-gray-600">NISN: ${student.nisn}</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="editStudent('${student.id}')" class="text-blue-600 hover:text-blue-800 p-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                            </button>
+                            <button onclick="deleteStudent('${student.id}')" class="text-red-600 hover:text-red-800 p-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-500">Program:</span>
+                            <span class="ml-2 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">${student.program}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-500">Jenis Kelamin:</span>
+                            <span class="ml-2">${student.gender}</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="text-gray-500">Tempat, Tanggal Lahir:</span>
+                            <span class="ml-2">${student.birthPlace}, ${formatDate(student.birthDate)}</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="text-gray-500">Orang Tua:</span>
+                            <span class="ml-2">${student.parentName}</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="text-gray-500">Telepon:</span>
+                            <span class="ml-2">${student.phone}</span>
+                        </div>
+                        ${student.email ? `
+                        <div class="col-span-2">
+                            <span class="text-gray-500">Email:</span>
+                            <span class="ml-2">${student.email}</span>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render student list
+        function renderStudents(studentsToRender = students) {
+            if (studentsToRender.length === 0) {
+                studentList.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <p>${searchInput.value ? 'Tidak ada hasil pencarian' : 'Belum ada pendaftar'}</p>
+                    </div>
+                `;
+            } else {
+                studentList.innerHTML = studentsToRender.map(createStudentCard).join('');
+            }
+            
+            studentCount.textContent = `${students.length} Siswa`;
+        }
+
+        // Add new student
+        function addStudent(studentData) {
+            const newStudent = {
+                id: generateId(),
+                ...studentData,
+                createdAt: new Date().toISOString()
+            };
+            
+            students.unshift(newStudent);
+            saveStudents();
+            renderStudents();
+            
+            // Show success message
+            showNotification('Pendaftaran berhasil! Data siswa telah disimpan.', 'success');
+        }
+
+        // Edit student
+        function editStudent(id) {
+            const student = students.find(s => s.id === id);
+            if (!student) return;
+            
+            editingId = id;
+            
+            // Fill edit form
+            document.getElementById('editId').value = student.id;
+            document.getElementById('editFullName').value = student.fullName;
+            document.getElementById('editNisn').value = student.nisn;
+            document.getElementById('editBirthPlace').value = student.birthPlace;
+            document.getElementById('editBirthDate').value = student.birthDate;
+            document.getElementById('editGender').value = student.gender;
+            document.getElementById('editProgram').value = student.program;
+            document.getElementById('editAddress').value = student.address;
+            document.getElementById('editParentName').value = student.parentName;
+            document.getElementById('editPhone').value = student.phone;
+            document.getElementById('editEmail').value = student.email || '';
+            
+            // Show modal
+            editModal.classList.remove('hidden');
+        }
+
+        // Update student
+        function updateStudent(id, studentData) {
+            const index = students.findIndex(s => s.id === id);
+            if (index !== -1) {
+                students[index] = {
+                    ...students[index],
+                    ...studentData,
+                    updatedAt: new Date().toISOString()
+                };
+                saveStudents();
+                renderStudents();
+                showNotification('Data siswa berhasil diperbarui!', 'success');
+            }
+        }
+
+        // Delete student
+        function deleteStudent(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data siswa ini?')) {
+                students = students.filter(s => s.id !== id);
+                saveStudents();
+                renderStudents();
+                showNotification('Data siswa berhasil dihapus!', 'success');
+            }
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg text-white fade-in ${
+                type === 'success' ? 'bg-green-500' : 
+                type === 'error' ? 'bg-red-500' : 'bg-blue-500'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Export to PDF
+        function exportToPDF() {
+            if (students.length === 0) {
+                showNotification('Tidak ada data siswa untuk diekspor!', 'error');
+                return;
+            }
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Set font
+                doc.setFont('helvetica');
+
+                // Header
+                doc.setFontSize(18);
+                doc.setTextColor(40, 40, 40);
+                doc.text('SMAN 1 Wringinanom', 105, 20, { align: 'center' });
+                
+                doc.setFontSize(14);
+                doc.text('Daftar Pendaftar Siswa Baru', 105, 30, { align: 'center' });
+                
+                doc.setFontSize(10);
+                doc.text(`Tanggal Cetak: ${new Date().toLocaleDateString('id-ID', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })}`, 105, 40, { align: 'center' });
+
+                // Prepare table data
+                const tableData = students.map((student, index) => [
+                    index + 1,
+                    student.fullName,
+                    student.nisn,
+                    student.gender,
+                    student.program,
+                    `${student.birthPlace}, ${formatDate(student.birthDate)}`,
+                    student.parentName,
+                    student.phone,
+                    student.email || '-'
+                ]);
+
+                // Create table
+                doc.autoTable({
+                    head: [['No', 'Nama Lengkap', 'NISN', 'JK', 'Program', 'TTL', 'Orang Tua', 'Telepon', 'Email']],
+                    body: tableData,
+                    startY: 50,
+                    styles: {
+                        fontSize: 8,
+                        cellPadding: 2,
+                        overflow: 'linebreak',
+                        halign: 'left'
+                    },
+                    headStyles: {
+                        fillColor: [59, 130, 246],
+                        textColor: 255,
+                        fontStyle: 'bold',
+                        halign: 'center'
+                    },
+                    alternateRowStyles: {
+                        fillColor: [248, 250, 252]
+                    },
+                    columnStyles: {
+                        0: { halign: 'center', cellWidth: 10 },
+                        1: { cellWidth: 35 },
+                        2: { cellWidth: 25 },
+                        3: { halign: 'center', cellWidth: 12 },
+                        4: { halign: 'center', cellWidth: 20 },
+                        5: { cellWidth: 40 },
+                        6: { cellWidth: 30 },
+                        7: { cellWidth: 25 },
+                        8: { cellWidth: 30 }
+                    },
+                    margin: { top: 50, left: 10, right: 10 },
+                    didDrawPage: function (data) {
+                        // Footer
+                        const pageCount = doc.internal.getNumberOfPages();
+                        const pageSize = doc.internal.pageSize;
+                        const pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight();
+                        
+                        doc.setFontSize(8);
+                        doc.setTextColor(128, 128, 128);
+                        doc.text(`Halaman ${data.pageNumber} dari ${pageCount}`, 
+                                pageSize.width / 2, pageHeight - 10, { align: 'center' });
+                        
+                        doc.text('SMAN 1 Wringinanom - Sistem Pendaftaran Siswa Baru', 
+                                10, pageHeight - 10);
+                    }
+                });
+
+                // Add summary
+                const finalY = doc.lastAutoTable.finalY + 20;
+                doc.setFontSize(10);
+                doc.setTextColor(40, 40, 40);
+                doc.text(`Total Pendaftar: ${students.length} siswa`, 14, finalY);
+
+                // Program breakdown
+                const programCount = students.reduce((acc, student) => {
+                    acc[student.program] = (acc[student.program] || 0) + 1;
+                    return acc;
+                }, {});
+
+                let yPos = finalY + 10;
+                doc.text('Rincian per Program:', 14, yPos);
+                yPos += 8;
+
+                Object.entries(programCount).forEach(([program, count]) => {
+                    doc.text(`• ${program}: ${count} siswa`, 20, yPos);
+                    yPos += 6;
+                });
+
+                // Gender breakdown
+                const genderCount = students.reduce((acc, student) => {
+                    acc[student.gender] = (acc[student.gender] || 0) + 1;
+                    return acc;
+                }, {});
+
+                yPos += 5;
+                doc.text('Rincian per Jenis Kelamin:', 14, yPos);
+                yPos += 8;
+
+                Object.entries(genderCount).forEach(([gender, count]) => {
+                    doc.text(`• ${gender}: ${count} siswa`, 20, yPos);
+                    yPos += 6;
+                });
+
+                // Save the PDF
+                const fileName = `Daftar_Pendaftar_SMAN1_Wringinanom_${new Date().toISOString().split('T')[0]}.pdf`;
+                doc.save(fileName);
+
+                showNotification('File PDF berhasil diunduh!', 'success');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                showNotification('Terjadi kesalahan saat membuat PDF!', 'error');
+            }
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredStudents = students.filter(student => 
+                student.fullName.toLowerCase().includes(searchTerm) ||
+                student.nisn.toLowerCase().includes(searchTerm) ||
+                student.program.toLowerCase().includes(searchTerm)
+            );
+            renderStudents(filteredStudents);
+        });
+
+        // Registration form submission
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const studentData = {
+                fullName: document.getElementById('fullName').value,
+                nisn: document.getElementById('nisn').value,
+                birthPlace: document.getElementById('birthPlace').value,
+                birthDate: document.getElementById('birthDate').value,
+                gender: document.getElementById('gender').value,
+                program: document.getElementById('program').value,
+                address: document.getElementById('address').value,
+                parentName: document.getElementById('parentName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+            
+            // Check for duplicate NISN
+            if (students.some(s => s.nisn === studentData.nisn)) {
+                showNotification('NISN sudah terdaftar! Silakan gunakan NISN yang berbeda.', 'error');
+                return;
+            }
+            
+            addStudent(studentData);
+            e.target.reset();
+        });
+
+        // Edit form submission
+        editForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const studentData = {
+                fullName: document.getElementById('editFullName').value,
+                nisn: document.getElementById('editNisn').value,
+                birthPlace: document.getElementById('editBirthPlace').value,
+                birthDate: document.getElementById('editBirthDate').value,
+                gender: document.getElementById('editGender').value,
+                program: document.getElementById('editProgram').value,
+                address: document.getElementById('editAddress').value,
+                parentName: document.getElementById('editParentName').value,
+                phone: document.getElementById('editPhone').value,
+                email: document.getElementById('editEmail').value
+            };
+            
+            // Check for duplicate NISN (excluding current student)
+            if (students.some(s => s.nisn === studentData.nisn && s.id !== editingId)) {
+                showNotification('NISN sudah terdaftar! Silakan gunakan NISN yang berbeda.', 'error');
+                return;
+            }
+            
+            updateStudent(editingId, studentData);
+            editModal.classList.add('hidden');
+            editingId = null;
+        });
+
+        // Reset form
+        document.getElementById('resetForm').addEventListener('click', () => {
+            registrationForm.reset();
+        });
+
+        // Modal controls
+        document.getElementById('closeModal').addEventListener('click', () => {
+            editModal.classList.add('hidden');
+            editingId = null;
+        });
+
+        document.getElementById('cancelEdit').addEventListener('click', () => {
+            editModal.classList.add('hidden');
+            editingId = null;
+        });
+
+        // Close modal when clicking outside
+        editModal.addEventListener('click', (e) => {
+            if (e.target === editModal) {
+                editModal.classList.add('hidden');
+                editingId = null;
+            }
+        });
+
+        // Export PDF button
+        exportPdfBtn.addEventListener('click', exportToPDF);
+
+        // Gallery filter functionality
+        function initGallery() {
+            const filterButtons = document.querySelectorAll('.gallery-filter');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+
+                    // Add active class to clicked button
+                    button.classList.add('active', 'bg-blue-600', 'text-white');
+                    button.classList.remove('bg-gray-200', 'text-gray-700');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            item.classList.add('fade-in');
+                        } else {
+                            item.style.display = 'none';
+                            item.classList.remove('fade-in');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStudents();
+            initGallery();
+        });
+
+        // Make functions globally available
+        window.editStudent = editStudent;
+        window.deleteStudent = deleteStudent;
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9761ad3ec190f938',t:'MTc1NjM2MTc1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
